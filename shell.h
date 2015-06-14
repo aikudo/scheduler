@@ -5,6 +5,9 @@
 #include <stdint.h>
 typedef void (*ShellCallBack)(uint8_t, char**);
 typedef struct Command_tag Command, *Command_ptr;
+typedef struct Shell_tag Shell, *Shell_ptr;
+
+extern Shell shell_inst;
 
 /**
  * shell_loop
@@ -15,7 +18,7 @@ typedef struct Command_tag Command, *Command_ptr;
  * Returns
  *  None
  */
-void shell_loop(void);
+void shell_loop(Shell_ptr s);
 
 /**
  * shell_insert
@@ -26,11 +29,11 @@ void shell_loop(void);
  * Returns
  *  An index of the command list or large number like 100 if it fails
  */
-uint8_t shell_insert(char *cmd, char *description, ShellCallBack fn);
+uint8_t shell_insert(Shell_ptr s, char *cmd, char *description, ShellCallBack fn);
 
 
+void shell_init(Shell_ptr s);
 /*
-void shell_welcome(void);
 void shell_echo(void);
 void shell_color(void);
 void shell_remove(uint16_t cmdid);
