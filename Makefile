@@ -26,7 +26,7 @@ LFLAGS =
 LIBS = -lm
 
 # define the C source files
-SRCS = main.c scheduler.c
+SRCS = main.c scheduler.c shell.c
 
 # define the C object files 
 #
